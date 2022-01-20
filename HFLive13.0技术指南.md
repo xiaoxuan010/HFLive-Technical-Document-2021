@@ -1,7 +1,6 @@
-<div style="text-align: center; padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: 1em auto 1.2em">HFLive13.0 技术指南</div>
+<div style="text-align: center; padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: 1em auto 1.2em; font-weight: bold">HFLive13.0 技术指南</div>
 
-
-
+<div style="padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: 1em auto 1.2em; font-weight: bold">目录</div>
 
 [TOC]
 
@@ -85,15 +84,17 @@
 
 <center>图3.5.2.2-3 摄像头设置</center>
 
-4. 将双屏设置为“扩展模式”.
+ 4.  将双屏设置为“扩展模式”.
 
-  ![微信截图_20220109222328](image/image-20220109222328.jpg)
+     ![image-20220109222328](image/image-20220109222328.jpg)
+
+
 
   <center>图3.5.2.2-4 屏幕设置</center>
 
 5. 为防止意外，关闭“入会开启摄像头”“入会开启麦克风”“语音激励”“隐藏非视频参会者”；为获得更纯净的画面，关闭“会中常驻投屏码”.
 
-   ![image-20220120201134223](image/image-20220120201134223.jpg)
+   ![图3.5.2.2-5 常规设置](image/image-20220120201134223.jpg)
 
 	<center>图3.5.2.2-5 常规设置</center>
 	
