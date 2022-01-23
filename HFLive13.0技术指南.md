@@ -237,3 +237,34 @@
 该方案成本低，但也有不少缺点，包括延迟高、配置麻烦、稳定性不佳、画质低。因此，我们建议 HFLive14.0+ 换用更好的方案。以下两个方案供参考：
 - 租用/购买大疆带屏遥控器，其能输出HDMI信号
 - 使用大疆精灵系列无人机，购买遥控器HDMI输出模块
+
+
+
+# 其它技术
+
+## 舞台干声处理
+
+## 现场声的收录
+
+现场声音的收录是直播声音的重要一环，HFLive12.0和13.0在这方面有所欠缺，HFLive14.0+ 务必重视直播的声音！
+
+### 连线
+
+![现场声的收录](diagrams/现场声的收录-摄影机.svg)
+
+<center>方案一</center>
+
+![现场声的收录](diagrams/现场声的收录-子机.svg)
+
+<center>方案二</center>
+
+现场声的连线非常简单，只需要将一只（最好是两只）麦克风连接到摄影机或光端机子机上，声音信号就会随视频一起传回切换台。
+
+### 配置
+
+若连接至摄影机，需要在摄影机中设置音频为 XLR 输入，具体参考 [URSA 说明书](https://documents.blackmagicdesign.com/UserManuals/BlackmagicURSAMiniManual.pdf#page=1580) 第1580页。
+
+若连接至子机，子机会自动采用外接的麦克风，具体参考 [子机说明书](https://documents.blackmagicdesign.com/UserManuals/ATEMConvertersManual.pdf#page=138) 第138页`连接音频`部分。
+
+无论采取哪种连接，都要在切换台中启用该路信号的音频，并调整音量大小，具体参考 [切换台说明书](https://documents.blackmagicdesign.com/UserManuals/ATEM_Production_Studio_Switchers_Manual.pdf#page=1217) 第1217页。
+
