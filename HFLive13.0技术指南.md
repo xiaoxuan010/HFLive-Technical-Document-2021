@@ -321,4 +321,4 @@
 
 无论采取哪种连接，都要在切换台中启用该路信号的音频，并调整音量大小，具体参考 [切换台说明书](https://documents.blackmagicdesign.com/UserManuals/ATEM_Production_Studio_Switchers_Manual.pdf#page=1217) 第1217页。
 
-# 其他问题
+#其他问题
