@@ -1,22 +1,18 @@
 <div style="text-align: center; padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: 1em auto 1.2em; font-weight: bold">HFLive13.0 技术指南</div>
 
-<div style="padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: 1em auto 1.2em; font-weight: bold">目录</div>
+<div style="padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: auto; text-align: center">目录</div>
 
 [TOC]
 
 #  拍摄组
 
-##  SDI In 连线
 
-##  小歌手机位布置
 
 
 
 #  线路组
 
-##  Level A/B 问题
 
-##  SDI In 连线
 
 
 
@@ -61,6 +57,8 @@
 ##  采集卡颜色问题
 
 在OBS视频采集设备的滤镜中，看到下方的效果滤镜，选择色彩校正，一般在彩排时校正完成。
+
+> 注意：OBS添加滤镜会直接影响输出画面，即使你打开了“工作室模式”，也会同时影响预监和输出两个画面。解决方法是分别调整两个采集卡的滤镜。比如圆钢采集卡On Program时就调整绿联采集卡，然后把绿联采集卡On Program上去，再调整圆钢采集卡的滤镜。
 
 ##  采集卡信号问题
 
@@ -266,7 +264,7 @@
 
    ![image-20220120215117990](image/image-20220120215117990.jpg)
 
-2. 在媒体源设置中，取消勾选”本地文件“，”网络缓冲“设置为`0 MB`，”输入“设置为`rtmp://手机IP地址/live/drone`，确认设置。
+2. 在媒体源设置中，取消勾选“本地文件”，“网络缓冲”设置为`0 MB`，“输入”设置为`rtmp://手机IP地址/live/drone`，确认设置。
 
 ![image-20220120215213798](image/image-20220120215213798.jpg)
 
