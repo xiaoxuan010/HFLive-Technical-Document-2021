@@ -1,6 +1,6 @@
 <div style="text-align: center; padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: 1em auto 1.2em; font-weight: bold">HFLive13.0 技术指南</div>
 
-<div style="padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: auto; text-align: center">目录</div>
+<div style="padding-bottom: .3em; font-size: 1.5em; line-height: 1.2; margin: auto; text-align: center">目录</div>
 
 [TOC]
 
@@ -21,38 +21,46 @@
 
 ## 网线
 
-网线有连接器，但是建议尽量减少转接次数减少带宽损耗
+网线有连接器，但是建议尽量减少转接次数减少带宽损耗。
 
 ## 摄像机设置
 
-摄像机在blackmagic的官网有说明书，里面有详细功能的介绍。
+摄像机在Blackmagic的官网有说明书，里面有详细功能的介绍。
 
 需要特别注意设置的有：
 
-1.摄影机编号、子机编号、切换台编号有没有对应
-
-2.输出接口是哪个
-
-3.输出SDI的level，关于level的设置问题后面会讲
-
-4.输出画质和频率
+1. 摄影机编号、子机编号、切换台编号有没有对应
+2. 输出接口是哪个
+3. 输出SDI的level，关于level的设置问题后面会讲
+4. 输出画质和频率
 
 ## SDI的level问题
 
-SDI连接视频信号时，若画质在1080p50Hz/1080p59.94Hz/1080p60Hz，需要注意level问题。
+当使用 SDI 的较高画质时（一般包括 1080p50/1080p59.94/1080p60 ），其信号又分为 Level A和 Level B 两种类型，**互不兼容**。以下表格列出了我们的一些设备可以接受的类型：
 
-level分a和b两种级别，其中：
+| 设备                                        | 输入 Level | 备注                        |
+| ------------------------------------------- | ---------- | --------------------------- |
+| 威固无线图传                                | A、B       | 不确定，是否支持 B 还需测试 |
+| 小玛 400S Pro 无线图传                      | A、B       |                             |
+| BMD光端机子机 (Blackmagic Camera Converter) | B          |                             |
+| BMD切换台 (ATEM Production Studio 4K)       | B          |                             |
+| 租赁的图传                                  | A、B       | 不确定，需要测试            |
 
-电视台大机只能输出level-a
-ursa（租赁的blackmagic摄像机）默认输出level-b，可调
-光端机子机只能输入level-b
-切换台只能输入level-b，但是输出可以调整
-威固图传可输入level-a，可输出level-b
-小玛400s pro只能输出level-a，输入可调
+以下表格列出了我们的一些设备可以输出的类型：
 
-HDMI不区分level
-1080i50及以下画质不区分level
-（1080p25，2160p等还未测试）
+| 设备                     | 输出 Level | 备注 |
+| ------------------------ | ---------- | ---- |
+| 电视台DV机 (AG-DVX200MC) | A          |      |
+| BMD摄影机 (URSA)         | A、B       | 可调 |
+| 威固无线图传             | A          |      |
+| 小玛 400S Pro 无线图传   | A          |      |
+| 租赁的图传               | A          |      |
+
+从上面两个表格不难发现，BMD 公司普遍采用 Level-B 标准，而其他厂商大多采用 Level-A 标准，因此 BMD 的设备和其他设备连接可能会出现困难。例如，电视台DV机无法通过 SDI 向子机发送 1080p50 信号；无线图传接收端无法通过 SDI 将信号送进切换台。
+
+注意，Level-A/B 的区分**仅限于**使用 SDI 传输 1080p50 以上（2160P未经过测试）的信号。也就是说，使用 HDMI 传输**或者**使用 1080p50 以下的画质（如 1080i50 ）**不受** Level-A/B 的影响。
+
+因此，当遇到 Level-A/B 不相同时，可以采取换用 HDMI 连接或降低画质的方法解决，需要在直播实践中特别留意。
 
 
 
