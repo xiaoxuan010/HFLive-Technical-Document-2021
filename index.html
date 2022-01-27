@@ -1,36 +1,910 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>HFLive13.0</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+
+/*!
+Misty Light
+Brought to you with ❤️ by E-Tiger Studio, 2017-2020
+https://github.com/etigerstudio/typora-misty-theme
+ */
+:root {
+  --control-text-color: #777;
+  --side-bar-bg-color: #f6f8fa
+}
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: subpixel-antialiased
+}
+body {
+  font-family: "思源宋体",serif;
+  color: #24292e;
+  line-height: 1.5
+}
+#write {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 30px 100px
+}
+#write > ol:first-child,
+#write > ul:first-child {
+  margin-top: 30px
+}
+body > :first-child {
+  margin-top: 0!important
+}
+body > :last-child {
+  margin-bottom: 0!important
+}
+a {
+  color: #4183c4
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  cursor: text;
+  color: #142331
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+  text-decoration: none
+}
+h1 code,
+h1 tt,
+h2 code,
+h2 tt,
+h3 code,
+h3 tt,
+h4 code,
+h4 tt,
+h5 code,
+h5 tt,
+h6 code,
+h6 tt {
+  font-size: inherit
+}
+h1 {
+  text-align: center;
+  padding-bottom: .3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  margin: 1em auto 1.2em
+}
+h1:after {
+  border-bottom: 2px dashed #afec9e;
+  content: '';
+  width: 100px;
+  display: block;
+  margin: .2em auto 0;
+  height: 2px
+}
+h2 {
+  font-size: 1.75em;
+  padding-left: 9px;
+  line-height: 1.4;
+  border-left: 6px solid #cce5ff
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43
+}
+
+#write > h3.md-focus:before,
+#write > h4.md-focus:before {
+  background-color: transparent;
+  width: auto;
+  height: auto
+}
+h4 {
+  font-size: 1.25em
+}
+
+h5 {
+  font-size: 1em
+}
+h6 {
+  font-size: 1em;
+  color: #777
+}
+blockquote,
+dl,
+ol,
+p,
+table,
+ul {
+  margin: .8em 0
+}
+li > ol,
+li > ul {
+  margin: 0
+}
+hr {
+  height: .25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0
+}
+a:first-child h1,
+a:first-child h2,
+a:first-child h3,
+a:first-child h4,
+a:first-child h5,
+a:first-child h6,
+body>h1:first-child,
+body>h1:first-child+h2,
+body>h2:first-child,
+body>h3:first-child,
+body>h4:first-child,
+body>h5:first-child,
+body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0
+}
+h1 p,
+h2 p,
+h3 p,
+h4 p,
+h5 p,
+h6 p {
+  margin-top: 0
+}
+li p.first {
+  display: inline-block
+}
+ol,
+ul {
+  padding-left: 30px
+}
+ol:first-child,
+ul:first-child {
+  margin-top: 0
+}
+ol:last-child,
+ul:last-child {
+  margin-bottom: 0
+}
+blockquote {
+  border-left: 4px dotted #e5e8e8;
+  padding: 0 12px;
+  color: #444;
+  font-size: .9em
+}
+blockquote blockquote {
+  padding-right: 0
+}
+table {
+  padding: 0;
+  word-break: initial
+}
+table tr {
+  border-top: 1px solid #dadfe6;
+  margin: 0;
+  padding: 0
+}
+table.md-table tr:nth-child(2n) {
+  background-color: #fafbfc
+}
+table tr td,
+table tr th {
+  border: 1px solid #dadfe6;
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px
+}
+table tr td:first-child,
+table tr th:first-child {
+  margin-top: 0
+}
+table tr td:last-child,
+table tr th:last-child {
+  margin-bottom: 0
+}
+.CodeMirror-gutters {
+  border-right: 1px solid #ddd
+}
+.md-fences,
+code,
+tt {
+  font-size: 90%;
+  border-radius: 3px;
+  font-family: "SF Mono",Consolas,"Liberation Mono",Menlo,Courier,monospace
+}
+code,
+tt {
+  margin: 0 2px;
+  padding: 2px 4px;
+  background-color: #e2f0ff
+}
+.md-fences {
+  background-color: #f6f8fa;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 12px 1em
+}
+.md-task-list-item > input {
+  margin-left: -1.45em;
+  margin-top: calc(1em - 10px)
+}
+#write pre.md-meta-block {
+  padding: 1rem;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7faf6;
+  border: 0;
+  border-radius: 3px;
+  color: #777;
+  margin-top: 0!important
+}
+.mathjax-block > .code-tooltip {
+  bottom: .375rem
+}
+#write > h3.md-focus:before {
+  left: -1.5625rem;
+  top: .375rem
+}
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before {
+  left: -1.5625rem;
+  top: .285714286rem
+}
+.md-image > .md-meta {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-family: "SF Mono",Consolas,"Liberation Mono",Courier,monospace;
+  padding: 2px 4px 0;
+  font-size: .9em;
+  color: inherit
+}
+.md-tag {
+  color: inherit
+}
+.md-toc {
+  margin-top: 20px;
+  padding-bottom: 20px
+}
+.sidebar-tabs {
+  border-bottom: none
+}
+#typora-quick-open {
+  border: 1px solid #ddd;
+  background-color: #f8f8f8
+}
+#typora-quick-open-item {
+  background-color: #fafafa;
+  border-color: #fefefe #e5e5e5 #e5e5e5 #eee;
+  border-style: solid;
+  border-width: 1px
+}
+.typora-quick-open-item {
+  padding-top: 3px
+}
+.typora-quick-open-list {
+  margin-top: 4px
+}
+.typora-quick-open-item-path {
+  margin-top: -2px
+}
+#md-notification:before {
+  top: 10px
+}
+.on-focus-mode blockquote {
+  border-left-color: rgba(85,85,85,.12)
+}
+.context-menu,
+.megamenu-content,
+footer,
+header {
+  font-family: "SF UI Text",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+}
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state {
+  visibility: visible
+}
+.mac-seamless-mode #typora-sidebar {
+  background-color: var(--side-bar-bg-color)
+}
+.md-lang {
+  color: #b4654d
+}
+.pin-outline #outline-content .outline-active strong,
+.pin-outline .outline-active {
+  color: #232323;
+  font-weight: 600
+}
+.outline-label {
+  color: #646464;
+  font-weight: 400
+}
+.file-list-item-summary {
+  font-family: "SF UI Text",-apple-system,-apple-system-body,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
+}
+@media print {
+  body {
+    font-weight: 400
+  }
+  b,
+  strong {
+    font-weight: 600
+  }
+  pre,
+  table {
+    page-break-inside: avoid
+  }
+  pre {
+    word-wrap: break-word
+  }
+}
+body {
+  font-weight: 400;
+  -webkit-font-smoothing: unset
+}
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  font-weight: 600
+}
+h1,
+table tr th {
+  font-weight: 400
+}
+.file-list-item-file-name {
+  font-weight: 500
+}
+
+
+
+
+center .img-note{
+  color: #999999;
+}
+/** initialize css counter */
+#write {
+    counter-reset: h1
+}
+
+h1 {
+    counter-reset: h2
+}
+
+h2 {
+    counter-reset: h3
+}
+
+h3 {
+    counter-reset: h4
+}
+
+h4 {
+    counter-reset: h5
+}
+
+h5 {
+    counter-reset: h6
+}
+
+/** put counter result into headings */
+#write h1:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+
+#write h3:before,
+h3.md-focus.md-heading:before /** override the default style for focused headings */ {
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+
+#write h4:before,
+h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+
+#write h5:before,
+h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+
+#write h6:before,
+h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+
+/** override the default style for focused headings */
+#write>h3.md-focus:before,
+#write>h4.md-focus:before,
+#write>h5.md-focus:before,
+#write>h6.md-focus:before,
+h3.md-focus:before,
+h4.md-focus:before,
+h5.md-focus:before,
+h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left:initial;
+    float: none;
+    top:initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+
+
+/**************************************
+ * Header Counters in TOC
+ **************************************/
+
+/* No link underlines in TOC */
+.md-toc-inner {
+    text-decoration: none;
+}
+
+.md-toc-content {
+    counter-reset: h1toc
+}
+
+.md-toc-h1 {
+    margin-left: 0;
+    font-size: 1.5rem;
+    counter-reset: h2toc
+}
+
+.md-toc-h2 {
+    font-size: 1.1rem;
+    margin-left: 2rem;
+    counter-reset: h3toc
+}
+
+.md-toc-h3 {
+    margin-left: 3rem;
+    font-size: .9rem;
+    counter-reset: h4toc
+}
+
+.md-toc-h4 {
+    margin-left: 4rem;
+    font-size: .85rem;
+    counter-reset: h5toc
+}
+
+.md-toc-h5 {
+    margin-left: 5rem;
+    font-size: .8rem;
+    counter-reset: h6toc
+}
+
+.md-toc-h6 {
+    margin-left: 6rem;
+    font-size: .75rem;
+}
+
+.md-toc-h1:before {
+    color: black;
+    counter-increment: h1toc;
+    content: counter(h1toc) ". "
+}
+
+.md-toc-h1 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h2:before {
+    color: black;
+    counter-increment: h2toc;
+    content: counter(h1toc) ". " counter(h2toc) ". "
+}
+
+.md-toc-h2 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h3:before {
+    color: black;
+    counter-increment: h3toc;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". "
+}
+
+.md-toc-h3 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h4:before {
+    color: black;
+    counter-increment: h4toc;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". " counter(h4toc) ". "
+}
+
+.md-toc-h4 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h5:before {
+    color: black;
+    counter-increment: h5toc;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". " counter(h4toc) ". " counter(h5toc) ". "
+}
+
+.md-toc-h5 .md-toc-inner {
+    margin-left: 0;
+}
+
+.md-toc-h6:before {
+    color: black;
+    counter-increment: h6toc;
+    content: counter(h1toc) ". " counter(h2toc) ". " counter(h3toc) ". " counter(h4toc) ". " counter(h5toc) ". " counter(h6toc) ". "
+}
+
+.md-toc-h6 .md-toc-inner {
+    margin-left: 0;
+}
+
+/**************************************
+ * Header Counters in Content
+ **************************************/
+
+/** initialize css counter */
+#write {
+    counter-reset: h1
+}
+
+h1 {
+    counter-reset: h2
+}
+
+h2 {
+    counter-reset: h3
+}
+
+h3 {
+    counter-reset: h4
+}
+
+h4 {
+    counter-reset: h5
+}
+
+h5 {
+    counter-reset: h6
+}
+
+/** put counter result into headings */
+#write h1:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+
+#write h2:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+
+#write h3:before, h3.md-focus.md-heading:before { /*override the default style for focused headings */
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+
+#write h4:before, h4.md-focus.md-heading:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+
+#write h5:before, h5.md-focus.md-heading:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+
+#write h6:before, h6.md-focus.md-heading:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+
+/** override the default style for focused headings */
+#write>h3.md-focus:before, #write>h4.md-focus:before, #write>h5.md-focus:before, #write>h6.md-focus:before, h3.md-focus:before, h4.md-focus:before, h5.md-focus:before, h6.md-focus:before {
+    color: inherit;
+    border: inherit;
+    border-radius: inherit;
+    position: inherit;
+    left: initial;
+    float: none;
+    top: initial;
+    font-size: inherit;
+    padding-left: inherit;
+    padding-right: inherit;
+    vertical-align: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+
+
+.sidebar-content {
+    counter-reset: h1
+}
+
+.outline-h1 {
+    counter-reset: h2
+}
+
+.outline-h2 {
+    counter-reset: h3
+}
+
+.outline-h3 {
+    counter-reset: h4
+}
+
+.outline-h4 {
+    counter-reset: h5
+}
+
+.outline-h5 {
+    counter-reset: h6
+}
+
+.outline-h1>.outline-item>.outline-label:before {
+    counter-increment: h1;
+    content: counter(h1) ". "
+}
+
+.outline-h2>.outline-item>.outline-label:before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) ". "
+}
+
+.outline-h3>.outline-item>.outline-label:before {
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) ". "
+}
+
+.outline-h4>.outline-item>.outline-label:before {
+    counter-increment: h4;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". "
+}
+
+.outline-h5>.outline-item>.outline-label:before {
+    counter-increment: h5;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". "
+}
+
+.outline-h6>.outline-item>.outline-label:before {
+    counter-increment: h6;
+    content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "." counter(h6) ". "
+}
+
+
+</style><title>HFLive13.0技术指南</title>
 </head>
-
-<body>
-	<div class="container">
-		<embed src="image/HFLive Logo.svg" style="width: 6em; align-self: center;"/>
-		<h2 style="text-align: center;">嘿咻咻，文档不见了？</h2>
-		
-		<p style="flex: 1 0 auto; align-self: flex-end; max-height: 20px;">
-			开玩笑的，文章在<a href="javascript:lcs();">这儿</a>呢
-		</p>
-	</div>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><div style="text-align: center; padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: 1em auto 1.2em; font-weight: bold">HFLive13.0 技术指南</div><div style="padding-bottom: .3em; font-size: 2.25em; line-height: 1.2; margin: auto; text-align: center">目录</div><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n4"><a class="md-toc-inner" href="#拍摄组">拍摄组</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n7"><a class="md-toc-inner" href="#线路组">线路组</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n12"><a class="md-toc-inner" href="#技术组">技术组</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n13"><a class="md-toc-inner" href="#直播间网络设备连接">直播间网络设备连接</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n32"><a class="md-toc-inner" href="#采集卡声音采集">采集卡声音采集</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n41"><a class="md-toc-inner" href="#采集卡颜色问题">采集卡颜色问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n45"><a class="md-toc-inner" href="#采集卡信号问题">采集卡信号问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n47"><a class="md-toc-inner" href="#歌词显示问题">歌词显示问题</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n56"><a class="md-toc-inner" href="#校友连线">校友连线</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n59"><a class="md-toc-inner" href="#连线-1">连线</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n77"><a class="md-toc-inner" href="#配置-1">配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n78"><a class="md-toc-inner" href="#电脑配置">电脑配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n86"><a class="md-toc-inner" href="#腾讯会议rooms配置">腾讯会议Rooms配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n114"><a class="md-toc-inner" href="#电子调音台配置-1">电子调音台配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n118"><a class="md-toc-inner" href="#矩阵设置">矩阵设置</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n122"><a class="md-toc-inner" href="#现场工作">现场工作</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n129"><a class="md-toc-inner" href="#故障排除">故障排除</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n139"><a class="md-toc-inner" href="#提升-1">提升</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n150"><a class="md-toc-inner" href="#无人机信号连接">无人机信号连接</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n153"><a class="md-toc-inner" href="#准备">准备</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n154"><a class="md-toc-inner" href="#硬件">硬件</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n170"><a class="md-toc-inner" href="#手机软件">手机软件</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n176"><a class="md-toc-inner" href="#电脑软件">电脑软件</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n180"><a class="md-toc-inner" href="#连线-2">连线</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n194"><a class="md-toc-inner" href="#配置-2">配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n195"><a class="md-toc-inner" href="#服务器配置">服务器配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n203"><a class="md-toc-inner" href="#大疆飞控软件设置">大疆飞控软件设置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n221"><a class="md-toc-inner" href="#obs-配置">OBS 配置</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n237"><a class="md-toc-inner" href="#提升-2">提升</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n245"><a class="md-toc-inner" href="#其它技术">其它技术</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n246"><a class="md-toc-inner" href="#舞台干声处理">舞台干声处理</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n249"><a class="md-toc-inner" href="#接线">接线</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n255"><a class="md-toc-inner" href="#配置-3">配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n256"><a class="md-toc-inner" href="#电子调音台配置-2">电子调音台配置</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n258"><a class="md-toc-inner" href="#切换台配置">切换台配置</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n264"><a class="md-toc-inner" href="#现场声的收录">现场声的收录</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n266"><a class="md-toc-inner" href="#连线-3">连线</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n272"><a class="md-toc-inner" href="#配置-4">配置</a></span></p></div><h1 id='拍摄组'><span>拍摄组</span></h1><p>&nbsp;</p><p>&nbsp;</p><h1 id='线路组'><span>线路组</span></h1><blockquote><p><span>本部分内容系原有线路组技术手册/线路组课程的补充，默认读者已具有相关基础知识。</span></p></blockquote><p>&nbsp;</p><p>&nbsp;</p><h1 id='技术组'><span>技术组</span></h1><h2 id='直播间网络设备连接'><span>直播间网络设备连接</span></h2><p><span>我们直播所用到的设备都是通过同一个局域网进行连接，首先我们来介绍直播间的网络连接：</span></p><ol start='' ><li><p><span>路由器的接法是WAN进LAN出，即墙里出来的网线连路由器的WAN口，而其他所有需要用到路由器网络的设备则是连接到路由器的LAN口。</span></p></li><li><p><span>交换机的接口要连接到路由器的LAN口，可以把交换器理解为路由器LAN口的扩展。</span></p></li><li><p><span>使用交换器任意一个接口与切换台，导播台，电子调音台连接。</span></p></li><li><p><span>计算机在连接直播间的网络（无线或有线）后均可以连接切换台和音控台。</span></p><blockquote><p><span>当路由器由于意外情况断网时，电脑和手机有可能会自动断开 Wi-Fi 连接，因此请尽量使用有线网络连接。</span></p></blockquote><p>&nbsp;</p><p><img src="image/直播间网络设备连线.svg" alt="直播间网络设备连线" style="zoom:50%;" /></p></li></ol><center>HFLive13.0 直播间网络接线</center><p><img src="image/直播间网络设备连线 - 建议.svg" alt="直播间网络设备连线 - 建议" style="zoom:50%;" /></p><center>直播间网络接线（建议）</center><p>&nbsp;</p><h2 id='采集卡声音采集'><span>采集卡声音采集</span></h2><p><span>采集卡声音采集历来是一个问题，下面将介绍采集卡采声的几个方法</span></p><ul><li><span>直连：使用圆刚或者绿联的采集卡直接进行采集，在OBS音频输出模式中选择输出到桌面音频（绿联不需要），然后添加音频输出采集，即可采集到HDMI接收到的舞台干声，不推荐。</span></li><li><span>采集卡加音频线：众所周知，在矩阵的输出口上，有音频线接口，用音频线连接矩阵以及用来上传的计算机，使用线路采集即可采集到声音，较稳定。</span></li><li><span>采集卡加采集卡：圆刚采集直播画面，绿联采集直播声音，方法如单个采集卡.</span></li></ul><h2 id='采集卡颜色问题'><span>采集卡颜色问题</span></h2><p><span>在OBS视频采集设备的滤镜中，看到下方的效果滤镜，选择色彩校正，一般在彩排时校正完成。</span></p><blockquote><p><span>注意：OBS添加滤镜会直接影响输出画面，即使你打开了“工作室模式”，也会同时影响预监和输出两个画面。解决方法是分别调整两个采集卡的滤镜。比如圆钢采集卡On Program时就调整绿联采集卡，然后把绿联采集卡On Program上去，再调整圆钢采集卡的滤镜。</span></p></blockquote><h2 id='采集卡信号问题'><span>采集卡信号问题</span></h2><p><span>使用HDMI将信号输入采集卡，再通过 USB3.0 传入上传的计算机，在OBS的来源中选择视频采集设备，特别注意，圆刚的采集卡的分辨率/帧率类型要选择</span><strong><span>自定义</span></strong><span>，否则会出现无信号的状况，绿联随意，采声同上。</span></p><h2 id='歌词显示问题'><span>歌词显示问题</span></h2><p><span>在各种节目中，我们总能遇到奇葩的歌词，下面以今年的花之二重唱为例，讲述非中英文歌曲在放歌词时因听不懂而不能正常播放的处理方法</span></p><ol start='' ><li><span>找选手沟通，询问歌词大意，或者全套歌词，输入到OBS上的文本，让其进行滚动播放。</span></li><li><span>我们需要将OBS的画面投影到现场屏幕上，否则现场无法看到滚动歌词。</span></li><li><span>使用矩阵连接电脑，将信号输出到大屏幕，在OBS中选择全屏投影，即可将OBS的program画面传输到现场大屏幕。</span></li></ol><h2 id='校友连线'><span>校友连线</span></h2><p><span>校友连线是华附春晚亮点节目之一，也是直播团队的中心工作之一。2021年我们采用了</span><strong><span>腾讯会议Rooms+采集卡</span></strong><span>方案。</span></p><p>&nbsp;</p><h3 id='连线-1'><span>连线</span></h3><p><img src="image/2021春晚校友连线接线图.svg" referrerpolicy="no-referrer" alt="2021春晚校友连线接线图"></p><center class="img-note">图 3.5.1-1 2021校友连线接线图</center><ol start='' ><li><p><span>用</span><code>3.5mm公-卡侬公线</code><span>连接电脑和音响组的现场调音台。</span></p></li><li><p><span>用</span><code>6.5mm公-6.5mm公线</code><span>连接现场调音台输出和电子调音台输入，可以使用直播间预埋的线。</span></p></li><li><p><span>用</span><code>双路卡侬公-卡侬母线</code><span>连接电子调音台输出和切换台输入。</span></p></li><li><p><span>用</span><code>HDMI</code><span>连接切换台 Program输出 和矩阵输入。</span></p></li><li><p><span>用</span><code>HDMI</code><span>连接矩阵输出和采集卡，用</span><code>USB</code><span>连接采集卡和电脑。</span></p></li><li><p><span>用</span><code>HDMI</code><span>连接矩阵输出到现场大屏控制器。</span></p><blockquote><p><span>现场调音台、现场大屏的连接可以与凌燃燃老师沟通。</span></p></blockquote></li></ol><h3 id='配置-1'><span>配置</span></h3><h4 id='电脑配置'><span>电脑配置</span></h4><ol start='' ><li><span>将电脑输出画质更改为与切换台一致.</span></li><li><span>将默认音频输入设备更改为采集卡输入（如</span><code>Capture Audio</code><span>）.</span></li><li><span>将默认音频输出设备更改为耳机孔输出.</span></li></ol><h4 id='腾讯会议rooms配置'><span>腾讯会议Rooms配置</span></h4><ol start='' ><li><p><span>将音频输出设为耳机孔输出（如 </span><code>耳机 (Synaptics Audio)</code><span>）.</span></p><p><img src="image/image-20220120193550358.png" alt="image-20220120193550358" style="zoom: 67%;" /></p><center>图 3.5.2.2-1 输出设备设置</center></li><li><p><span>音频输入设为</span><strong><span>采集卡输入</span></strong><span>（如</span><code>Capture Audio</code><span>)；在高级设置中，启用“使用设备原声”，开启“回声消除”，关闭“音频降噪”.</span></p><p><img src="image/image-20220120200302769.jpg" alt="image-20220120200302769" style="zoom: 80%;" /></p></li></ol><center>图 3.5.2.2-2 输入设备设置</center><ol start='3' ><li><p><span>摄像头输入设为采集卡输入（如 </span><code>Capture Video</code><span>）.</span></p><p><img src="image/image-20220109221717.jpg" alt="微信截图_20220109221717" style="zoom: 80%;" /></p></li></ol><center>图3.5.2.2-3 摄像头设置</center><ol start='4' ><li><p><span>将双屏设置为“扩展模式”.</span></p><p><img src="image/image-20220109222328.jpg" alt="image-20220109222328" style="zoom:80%;" /></p></li></ol><p>&nbsp;</p>  <center>图3.5.2.2-4 屏幕设置</center><ol start='5' ><li><p><span>为防止意外，关闭“入会开启摄像头”“入会开启麦克风”“语音激励”“隐藏非视频参会者”；为获得更纯净的画面，关闭“会中常驻投屏码”.</span></p><p><img src="image/image-20220120201134223.jpg" alt="图3.5.2.2-5 常规设置" style="zoom:80%;" /></p><center>图3.5.2.2-5 常规设置</center><blockquote><p><span>软件可能会经常提示“麦克风、扬声器、摄像头未经过腾讯会议Rooms硬件认证”等，忽略即可。</span></p></blockquote></li></ol><h4 id='电子调音台配置-1'><span>电子调音台配置</span></h4><p><span>	</span><span>在电子调音台中，我们要确保现场调音台的输入能正确输出到 Main LR。</span></p><blockquote><p><span>电子调音台相关配置可以请求音组协助，但还是建议技术组同学学习电子调音台基本操作方法。</span><a href='https://www.behringer.com/product.html?modelCode=P0BI8'><span>产品官网</span></a></p></blockquote><h4 id='矩阵设置'><span>矩阵设置</span></h4><p><span>	</span><span>在矩阵中，将切换台Program输出正确映射到采集卡和现场大屏。</span></p><p>&nbsp;</p><p><span>经过以上配置，参会者的声音能输出到现场的音响系统，参会者的画面能显示在切换台 Multiview 画面上，能输出到 Program；现场 Program 的画面和声音能够上传腾讯会议，参会者能听到现场的声音，能看到现场的画面。这也是校友连线的基本要求。</span></p><h3 id='现场工作'><span>现场工作</span></h3><p><span>   校友连线非常考验现场的操作和应急情况处置能力。</span></p><p><span>   在主持人讲话时，提醒导播切到摄影机画面，在微信群通知下一个连线的地区。</span></p><p><span>   主持人与连线地区互动时，将该地区设为焦点画面，提醒导播将画面切到校友。</span></p><p><span>   出现突发故障时，第一时间使用对讲机通知主持人，立即确定故障位置并通知相关人员进行排障。</span></p><blockquote><p><span>校友连线前，要进行大量的测试。必须至少一次按春晚流程进行1：1测试。同时，与校友连线负责人和主持人密切沟通，确认应急方案。</span></p></blockquote><h3 id='故障排除'><span>故障排除</span></h3><ol start='' ><li><span>信号进不了切换台：检查HDMI连线、画质。</span></li><li><span>现场大屏无信号：检查矩阵设置、HDMI线连接、现场大屏控制台设置。</span></li><li><span>校友听不到声音：检查 Program 是否有声音，检查腾讯会议设置，检查麦克风是否关闭。</span></li><li><span>现场听不到声音：检查腾讯会议输出设置，检查现场调音台设置，检查连线。</span></li></ol><h3 id='提升-1'><span>提升</span></h3><p><span>	</span><span>由上面的一系列配置不难发现，腾讯会议Rooms输出的校友声音最终又送回了腾讯会议Rooms输入里，我们依靠“回声消除”才能勉强不造成直播事故。因此 HFLive14.0+ 一定要不断尝试创新，在确保稳定性的前提下努力提高质量。以下建议供参考：</span></p><ol start='' ><li><p><span>优化接线方案</span></p><p><img src="image/校友连线接线图 - 提高.svg" referrerpolicy="no-referrer" alt="校友连线接线图 - 提高"></p></li><li><p><span>尽量让校友多进行几次测试，特别是要让他们试一下像春晚那样大声喊的时候会不会炸麦。测试的时候要叫上音组的同学，也让他们演练一下到时候的音量控制。</span></p></li><li><p><span>让校友尽量佩戴耳机，或者让他们的扬声器尽量远离麦克风，防止回荡。（比如另外用一台手机入会来听现场声音，电脑来录画面和声音）.</span></p></li></ol><h2 id='无人机信号连接'><span>无人机信号连接</span></h2><p><span>无人机机位主要在小歌手时使用，其独特的视角能大幅提高直播质量。2021年，HFLive13.0 使用的是</span><strong><span>DJI Mavic 2 + RTMP局域网传输 + OBS拉流 + 光端机 + 切换台</span></strong><span>方案，实现720P传输。</span></p><p><span>该方案适用于任何大部分大疆无人机，此处以DJI Mavic Pro 为例。</span></p><h3 id='准备'><span>准备</span></h3><h4 id='硬件'><span>硬件</span></h4><ul><li><span>DJI Mavic Pro 无人机一台</span></li><li><span>遥控器</span></li><li><span>手机</span></li><li><span>电脑</span></li><li><span>光端机子机 (Blackmagic Camera Converter)</span></li><li><span>光端机母机 (Blackmagic Studio Converter)</span></li><li><span>切换台 (ATEM Production Studio 4K)</span></li></ul><h4 id='手机软件'><span>手机软件</span></h4><ul><li><span>DJI Go 4</span></li><li><span>RTMP-Server </span><a href='https://wwu.lanzout.com/io3Xsz1egvc'><span>（蓝奏云下载 访问码: f52x）</span></a><span>或 </span><a href='https://1drv.ms/u/s!An9BdN5oWRYghj7dU5rAuiv40oO_?e=EcPoSL'><span>OneDrive （可能需要✈）</span></a></li></ul><h4 id='电脑软件'><span>电脑软件</span></h4><ul><li><span>OBS（Open Broadcast Software）</span></li></ul><h3 id='连线-2'><span>连线</span></h3><p><span>相关连线图如下：</span></p><p><img src="image/小歌手无人机连线.svg" referrerpolicy="no-referrer" alt="无人机连线图"></p><ol start='' ><li><span>参考无人机使用说明，将手机连接到无人机遥控器。</span></li><li><span>将手机和电脑连到同一局域网下（同Wi-Fi）.</span></li><li><span>用</span><code>HDMI</code><span>连接电脑和光端机子机，注意更改画质。</span></li><li><span>用光纤连接光端机子机和母机（请线组协助）.</span></li><li><span>用</span><code>SDI</code><span>将光端机母机连接到切换台。</span></li></ol><h3 id='配置-2'><span>配置</span></h3><h4 id='服务器配置'><span>服务器配置</span></h4><ol start='' ><li><span>打开 RTMP-Server 软件，开启服务。</span></li></ol><p><img src="image/IMG_20220120_213300.jpg" alt="IMG_20220120_213300" style="zoom:50%;" /></p><ol start='2' ><li><span>设置，防止手机杀后台。（请在搜索引擎搜索：</span><code>xx品牌手机如何防止杀后台</code><span>）</span></li></ol><h4 id='大疆飞控软件设置'><span>大疆飞控软件设置</span></h4><ol start='' ><li><span>打开DJI Go 4，连接飞行器。</span></li></ol><p><img src="image/1642688258980.jpg" alt="连接飞行器" style="zoom: 67%;" /></p><center>连接飞行器</center><ol start='2' ><li><span>打开设置，“选择直播平台”</span></li></ol><p><img src="image/IMG_20220121_100116.jpg" alt="选择直播平台" style="zoom: 25%;" /></p><ol start='3' ><li><span>填入推流地址，开始直播</span></li></ol><p><img src="image/IMG_20220121_100053.jpg" alt="填入直播地址" style="zoom:25%;" /></p><p><img src="image/IMG_20220121_100039.jpg" alt="开始推流" style="zoom:25%;" /></p><ol start='4' ><li><span>推流开始后，能在左上角看到相关提示。若能看到帧率值则代表直播正常，若FPS为0则代表推流失败，需检查服务器状态和推流参数。</span></li></ol><h4 id='obs-配置'><span>OBS 配置</span></h4><ol start='' ><li><p><span>启动OBS，新建媒体源。</span></p><p><img src="image/image-20220120215117990.jpg" referrerpolicy="no-referrer" alt="image-20220120215117990"></p></li><li><p><span>在媒体源设置中，取消勾选“本地文件”，“网络缓冲”设置为</span><code>0 MB</code><span>，“输入”设置为</span><code>rtmp://手机IP地址/live/drone</code><span>，确认设置。</span></p></li></ol><p><img src="image/image-20220120215213798.jpg" referrerpolicy="no-referrer" alt="image-20220120215213798"></p><ol start='3' ><li><span>经过以上设置后即可在OBS窗口中看到无人机画面</span></li></ol><p><img src="image/image-20220120215640775.jpg" referrerpolicy="no-referrer" alt="image-20220120215640775"></p><ol start='4' ><li><span>右键源，全屏投影到第二屏幕，这时就能在切换台Multiview中看到无人机的画面了。</span></li></ol><p><img src="image/image-20220120215818888.png" referrerpolicy="no-referrer" alt="image-20220120215818888"></p><h3 id='提升-2'><span>提升</span></h3><p><span>该方案成本低，但也有不少缺点，包括延迟高、配置麻烦、稳定性不佳、画质低。因此，我们建议 HFLive14.0+ 换用更好的方案。以下两个方案供参考：</span></p><ul><li><span>租用/购买大疆带屏遥控器，其能输出HDMI信号</span></li><li><span>使用大疆精灵系列无人机，购买遥控器HDMI输出模块</span></li></ul><p>&nbsp;</p><h1 id='其它技术'><span>其它技术</span></h1><h2 id='舞台干声处理'><span>舞台干声处理</span></h2><p><span>舞台干声，是指现场调音台输出的各种声音，主要包括：现场各种表演麦克风、表演音乐等。舞台干声是的收录的处理是直播的重要内容之一。如果没有声音，画面拍得再好也是一次失败的直播。直播收声原理如下图所示：</span></p><p><img src="image/舞台干声收录.svg" referrerpolicy="no-referrer" alt="舞台干声收录"></p><h3 id='接线'><span>接线</span></h3><ol start='' ><li><span>使用两路</span><code>6.5mm-6.5mm</code><span>音频线连接现场调音台输出和电子调音台的输入。HFLive13.0使用的是在墙体内预埋的音频线，连接现场调音台的</span><code>AUX3/4</code><span>输出。</span></li><li><span>使用两路</span><code>卡侬</code><span>（XLR）线连接电子调音台的</span><code>Main LR</code><span>输出和切换台的输入。</span></li></ol><h3 id='配置-3'><span>配置</span></h3><h4 id='电子调音台配置-2'><span>电子调音台配置</span></h4><p><span>	</span><span>调整电子调音台，使输入的舞台干声能正常输出到</span><code>Main LR</code><span>.</span></p><h4 id='切换台配置'><span>切换台配置</span></h4><p><span>	</span><span>在切换台软件控制面板的音频面板中，启用来自XLR的声音，调整音量大小。</span></p><p>&nbsp;</p><p><span>经过以上设置后，舞台干声即可进入直播 Program 中。</span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='现场声的收录'><span>现场声的收录</span></h2><p><span>现场声音的收录是直播声音的重要一环，HFLive12.0和13.0在这方面有所欠缺，HFLive14.0+ 务必重视直播的声音！</span></p><h3 id='连线-3'><span>连线</span></h3><p><img src="image/现场声的收录-摄影机.svg" referrerpolicy="no-referrer" alt="现场声的收录"></p><center>方案一</center><p><img src="image/现场声的收录-子机.svg" referrerpolicy="no-referrer" alt="现场声的收录"></p><center>方案二</center><p><span>现场声的连线非常简单，只需要将一只（最好是两只）麦克风连接到摄影机或光端机子机上，声音信号就会随视频一起传回切换台。</span></p><h3 id='配置-4'><span>配置</span></h3><p><span>若连接至摄影机，需要在摄影机中设置音频为 XLR 输入，具体参考 </span><a href='https://documents.blackmagicdesign.com/UserManuals/BlackmagicURSAMiniManual.pdf#page=1580'><span>URSA 说明书</span></a><span> 第1580页。</span></p><p><span>若连接至子机，子机会自动采用外接的麦克风，具体参考 </span><a href='https://documents.blackmagicdesign.com/UserManuals/ATEMConvertersManual.pdf#page=138'><span>子机说明书</span></a><span> 第138页</span><code>连接音频</code><span>部分。</span></p><p><span>无论采取哪种连接，都要在切换台中启用该路信号的音频，并调整音量大小，具体参考 </span><a href='https://documents.blackmagicdesign.com/UserManuals/ATEM_Production_Studio_Switchers_Manual.pdf#page=1217'><span>切换台说明书</span></a><span> 第1217页。</span></p><p>&nbsp;</p></div></div>
 </body>
-
-<style>
-	.container{
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: 100vh;
-	}
-</style>
-
-<script>
-	function lcs(){
-		window.location.href="https://b23.tv/YnWPDFP";
-	};
-</script>
 </html>
